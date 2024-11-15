@@ -1,18 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 79, in script
-    call screen navigation_screen
+  File "game/script.rpy", line 96, in script
+    call screen explorar_cena
   File "renpy/common/000statements.rpy", line 671, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-Exception: Screen navigation_screen is not known.
-
+  File "game/script.rpy", line 100, in execute
+    screen explorar_cena():
+  File "game/script.rpy", line 100, in execute
+    screen explorar_cena():
+IndexError: list index out of range
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 79, in script
-    call screen navigation_screen
+  File "game/script.rpy", line 96, in script
+    call screen explorar_cena
   File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\ast.py", line 1974, in execute
     self.call("execute")
   File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\ast.py", line 1953, in call
@@ -21,14 +24,37 @@ Full traceback:
     return method(parsed, *args, **kwargs)
   File "renpy/common/000statements.rpy", line 671, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\exports\statementexports.py", line 331, in call_screen
-    renpy.exports.show_screen(_screen_name, *args, _transient=True, **kwargs)
-  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\screen.py", line 1327, in show_screen
-    raise Exception("Screen %s is not known.\n" % (name[0],))
-Exception: Screen navigation_screen is not known.
-
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\exports\statementexports.py", line 345, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\ui.py", line 301, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\core.py", line 2215, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\core.py", line 2745, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\displayable.py", line 434, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\screen.py", line 480, in visit_all
+    callback(self)
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\core.py", line 2745, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\screen.py", line 491, in per_interact
+    self.update()
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\screen.py", line 697, in update
+    self.screen.function(**self.scope)
+  File "game/script.rpy", line 100, in execute
+    screen explorar_cena():
+  File "game/script.rpy", line 100, in execute
+    screen explorar_cena():
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\sl2\slast.py", line 1009, in execute
+    imc = renpy.ui.imagemap_stack[-1]
+IndexError: list index out of range
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.3.2.24090902
 As cores da Saudade 1.0
-Wed Nov 13 16:11:50 2024
+Thu Nov 14 21:56:33 2024

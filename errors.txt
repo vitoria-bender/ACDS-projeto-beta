@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label start is defined twice, at File "game/script.rpy", line 20:
-label start:
-and File "game/script.rpy", line 99:
-label start:
-
+File "game/script.rpy", line 88: Line is indented, but the preceding define statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    call update_scene
+    ^
 
 Ren'Py Version: Ren'Py 8.3.2.24090902
-Wed Nov 13 14:21:52 2024
+Thu Nov 14 01:23:42 2024

@@ -75,12 +75,10 @@ label start:
     "Talvez, com o tempo, tudo se torne mais claro."
     
 
-    scene sala1 with fade
-    call update_scene
-    call screen navigation_screen
-    return
+scene sala1 with fade
 
-define scenes = [
+# Definindo as cenas na ordem de navegação
+define cenas = [
     "sala1", "sala2", "sala3", "sala4",
     "cozinha1", "cozinha2", "cozinha3",
     "corredor",
@@ -88,21 +86,29 @@ define scenes = [
     "banheiro1", "banheiro2"
 ]
 
+# Variável para controlar o índice da cena atual
+default current_scene_index = 0
 
-define current_scene_index = 0
+# Função para atualizar a cena conforme o índice atual
 label update_scene():
-    $ current_scene = scenes[current_scene_index]
+    $ current_scene = cenas[current_scene_index]
     show expression current_scene
+    call screen explorar_cena
     return
 
-screen navigation_screen():
-    
-    add current_scene
+# Tela com hotspots nas setas para navegação
+screen explorar_cena():
+    # Exibe a imagem da cena atual
+    add current_scene + ".png"  # Certifique-se de que os arquivos de imagem estão nomeados como "sala1.png", etc.
 
-    textbutton "<" action [SetVariable("current_scene_index", (current_scene_index - 1) % len(scenes)), Jump("update_scene")] xalign 0.05 yalign 0.5
+    # Hotspot para a seta da esquerda (volta para a cena anterior)
+    hotspot (20, 250, 50, 50) action [
+        SetVariable("current_scene_index", (current_scene_index - 1) % len(cenas)),
+        Jump("update_scene")
+    ]
 
-   
-    textbutton ">" action [SetVariable("current_scene_index", (current_scene_index + 1) % len(scenes)), Jump("update_scene")] xalign 0.95 yalign 0.5
-
-
-
+    # Hotspot para a seta da direita (avança para a próxima cena)
+    hotspot (730, 250, 50, 50) action [
+        SetVariable("current_scene_index", (current_scene_index + 1) % len(cenas)),
+        Jump("update_scene")
+    ]

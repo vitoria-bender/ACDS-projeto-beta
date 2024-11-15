@@ -71,7 +71,7 @@ define gui.name_text_font = "DejaVuSans.ttf"
 define gui.interface_text_font = "DejaVuSans.ttf"
 
 ## O tamanho do texto normal do diálogo.
-define gui.text_size = 33
+define gui.text_size = 25
 
 ## O tamanho dos nomes dos caracteres.
 define gui.name_text_size = 45
@@ -92,8 +92,8 @@ define gui.title_text_size = 50
 ## Menus principal e de jogos ##################################################
 
 ## As imagens usadas nos menus principal e de jogo.
-define gui.main_menu_background = "images/thumbnail.png"
-define gui.game_menu_background = "images/thumbnail.png"
+define gui.main_menu_background = im.Scale("images/thumbnail.png", 1700, 1057)
+define gui.game_menu_background = im.Scale("images/thumbnail.png", 1700, 1057)
 
 
 ## Diálogo #####################################################################
@@ -212,14 +212,14 @@ define gui.quick_button_text_selected_color = gui.accent_color
 ##
 ## Os botões de escolha são usados nos menus do jogo.
 
-define gui.choice_button_width = 1185
+define gui.choice_button_width = 750
 define gui.choice_button_height = None
 define gui.choice_button_tile = False
-define gui.choice_button_borders = Borders(150, 8, 150, 8)
+define gui.choice_button_borders = Borders(50, 8, 50, 8)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
-define gui.choice_button_text_idle_color = '#707070'
+define gui.choice_button_text_idle_color = '#ffffff'
 define gui.choice_button_text_hover_color = "#ffffff"
 define gui.choice_button_text_insensitive_color = '#7070707f'
 

@@ -18,7 +18,7 @@ define config.name = _("As cores da Saudade")
 ## Determina se o título fornecido acima será mostrado na tela do menu
 ## principal. Defina como False para ocultar o título.
 
-define gui.show_name = True
+define gui.show_name = False
 
 
 ## A versão do jogo.

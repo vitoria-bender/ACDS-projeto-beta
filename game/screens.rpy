@@ -213,16 +213,16 @@ screen choice(items):
             textbutton i.caption action i.action
 
 
-style choice_vbox is vbox
+style choice_vbox is hbox
 style choice_button is button
 style choice_button_text is button_text
 
 style choice_vbox:
     xalign 0.5
-    ypos 405
-    yanchor 0.5
+    yalign 1.0
+    yoffset -100
 
-    spacing gui.choice_spacing
+    spacing 1
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
@@ -287,11 +287,12 @@ style quick_button_text:
 
 screen navigation():
 
-    vbox:
+    hbox:
         style_prefix "navigation"
 
-        xpos gui.navigation_xpos
-        yalign 0.5
+        xalign 0.5
+        yalign 1.0
+        yoffset -100
 
         spacing gui.navigation_spacing
 
@@ -340,6 +341,7 @@ style navigation_button:
 
 style navigation_button_text:
     properties gui.text_properties("navigation_button")
+    xalign 0.5
 
 
 ## Tela do menu principal ######################################################
@@ -385,7 +387,6 @@ style main_menu_frame:
     xsize 420
     yfill True
 
-    background "gui/overlay/main_menu.png"
 
 style main_menu_vbox:
     xalign 1.0
