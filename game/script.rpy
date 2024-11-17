@@ -2,7 +2,9 @@
 
 
 image sala1 = im.Scale("images/sala1.png", 1748, 1087)
-image sala2 = im.Scale("images/sala2", 1748, 1087)
+image sala2 = im.Scale("images/sala2.png", 1748, 1087)
+image sala3 = im.Scale("images/sala3.png", 1748, 1087)
+image sala4 = im.Scale("images/sala4.png", 1748, 1087)
 image psique = im.Scale("images/psique.png", 1748, 1087)
 image psique2 = im.Scale("images/psique2.png", 1748, 1087)
 
@@ -17,7 +19,7 @@ label splashscreen:
 
 label start:
     play music bgm loop
-    scene psique with fade 
+    scene psique with fade
     "novamente aqui"
 
 
@@ -74,41 +76,27 @@ label start:
 
     "Talvez, com o tempo, tudo se torne mais claro."
     
+scene sala1 with fade 
 
-scene sala1 with fade
 
-# Definindo as cenas na ordem de navegação
-define cenas = [
-    "sala1", "sala2", "sala3", "sala4",
-    "cozinha1", "cozinha2", "cozinha3",
-    "corredor",
-    "quarto1", "quarto2", "quarto3",
-    "banheiro1", "banheiro2"
-]
+image botaoEsquerda = "botaoEsquerda.png"
+image botaoDireita = "botaoDireita.png"
 
-# Variável para controlar o índice da cena atual
-default current_scene_index = 0
+# Variável para controlar a sala atual
+default current_room = "sala1"
 
-# Função para atualizar a cena conforme o índice atual
-label update_scene():
-    $ current_scene = cenas[current_scene_index]
-    show expression current_scene
-    call screen explorar_cena
-    return
+# Lista de salas disponíveis
+define salas = ["sala1", "sala2", "sala3", "sala4"]
 
-# Tela com hotspots nas setas para navegação
-screen explorar_cena():
-    # Exibe a imagem da cena atual
-    add current_scene + ".png"  # Certifique-se de que os arquivos de imagem estão nomeados como "sala1.png", etc.
+# Função para mudar de sala
+python:
+    def mudar_sala(direcao):
+        global current_room
+        current_index = salas.index(current_room)
+        if direcao == "esquerda":
+            current_room = salas[(current_index - 1) % len(salas)]
+        elif direcao == "direita":
+            current_room = salas[(current_index + 1) % len(salas)]
 
-    # Hotspot para a seta da esquerda (volta para a cena anterior)
-    hotspot (20, 250, 50, 50) action [
-        SetVariable("current_scene_index", (current_scene_index - 1) % len(cenas)),
-        Jump("update_scene")
-    ]
-
-    # Hotspot para a seta da direita (avança para a próxima cena)
-    hotspot (730, 250, 50, 50) action [
-        SetVariable("current_scene_index", (current_scene_index + 1) % len(cenas)),
-        Jump("update_scene")
-    ]
+while True: 
+    call screen navegar_salas

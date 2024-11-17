@@ -222,7 +222,7 @@ style choice_vbox:
     yalign 1.0
     yoffset -100
 
-    spacing 1
+    spacing 2
 
 style choice_button is default:
     properties gui.button_properties("choice_button")

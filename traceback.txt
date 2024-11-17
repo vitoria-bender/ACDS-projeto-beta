@@ -1,21 +1,27 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 96, in script
-    call screen explorar_cena
+  File "game/script.rpy", line 80, in script
+    call screen navegar_salas
   File "renpy/common/000statements.rpy", line 671, in execute_call_screen
     store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/script.rpy", line 100, in execute
-    screen explorar_cena():
-  File "game/script.rpy", line 100, in execute
-    screen explorar_cena():
-IndexError: list index out of range
+  File "game/screen.rpy", line 2, in execute
+    screen navegar_salas():
+  File "game/screen.rpy", line 2, in execute
+    screen navegar_salas():
+  File "game/screen.rpy", line 7, in execute
+    imagebutton:
+  File "game/screen.rpy", line 7, in keywords
+    imagebutton:
+  File "game/screen.rpy", line 10, in <module>
+    action Function(mudar_sala, "esquerda")
+NameError: name 'mudar_sala' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 96, in script
-    call screen explorar_cena
+  File "game/script.rpy", line 80, in script
+    call screen navegar_salas
   File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\ast.py", line 1974, in execute
     self.call("execute")
   File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\ast.py", line 1953, in call
@@ -46,15 +52,19 @@ Full traceback:
     self.update()
   File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\display\screen.py", line 697, in update
     self.screen.function(**self.scope)
-  File "game/script.rpy", line 100, in execute
-    screen explorar_cena():
-  File "game/script.rpy", line 100, in execute
-    screen explorar_cena():
-  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\sl2\slast.py", line 1009, in execute
-    imc = renpy.ui.imagemap_stack[-1]
-IndexError: list index out of range
+  File "game/screen.rpy", line 2, in execute
+    screen navegar_salas():
+  File "game/screen.rpy", line 2, in execute
+    screen navegar_salas():
+  File "game/screen.rpy", line 7, in execute
+    imagebutton:
+  File "game/screen.rpy", line 7, in keywords
+    imagebutton:
+  File "game/screen.rpy", line 10, in <module>
+    action Function(mudar_sala, "esquerda")
+NameError: name 'mudar_sala' is not defined
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.3.2.24090902
 As cores da Saudade 1.0
-Thu Nov 14 21:56:33 2024
+Sat Nov 16 09:44:33 2024
