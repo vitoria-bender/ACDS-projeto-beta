@@ -2,9 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 100: Line is indented, but the preceding scene statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    call screen navegar_salas
-    ^
+The label sala3 is defined twice, at File "game/script.rpy", line 121:
+label sala3:
+and File "game/script.rpy", line 154:
+label sala3: 
+
 
 Ren'Py Version: Ren'Py 8.3.2.24090902
-Sat Nov 16 09:41:27 2024
+Mon Nov 18 10:33:28 2024
