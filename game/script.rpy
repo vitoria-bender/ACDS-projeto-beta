@@ -1,24 +1,33 @@
 ﻿define bgm = "audio/vitz.wav"
 
+image ainda = im.Scale("images/ainda.png", 1748, 1087)
 image corredor = im.Scale("images/corredor.png", 1748, 1087)
 image cozinha1 = im.Scale("images/cozinha1.png", 1748, 1087)
 image cozinha2 = im.Scale("images/cozinha2.png", 1748, 1087)
 image cozinha3 = im.Scale("images/cozinha3.png", 1748, 1087)
+image cozinha4 = im.Scale("images/cozinha4.png", 1748, 1087)
 image quarto1 = im.Scale("images/quarto1.png", 1748, 1087)
 image quarto2 = im.Scale("images/quarto2.png", 1748, 1087)
 image quarto3 = im.Scale("images/quarto3.png", 1748, 1087)
 image sala1 = im.Scale("images/sala1.png", 1748, 1087)
 image sala2 = im.Scale("images/sala2.png", 1748, 1087)
+image sala2_interacao = im.Scale("images/sala2_interacao.png", 1748, 1087)
 image sala3 = im.Scale("images/sala3.png", 1748, 1087)
+image sala3_interacao = im.Scale("images/sala3_interacao.png",1748, 1087)
 image sala4 = im.Scale("images/sala4.png", 1748, 1087)
 image psique = im.Scale("images/psique.png", 1748, 1087)
 image psique2 = im.Scale("images/psique2.png", 1748, 1087)
 image BotaoPorta = im.Scale("images/BotaoPorta.png", 800, 800)
+default actions_completed = 0 
+default total_actions = 4     
+default sala2_interacao_done = False
+default quarto1_interacao_done = False
+default cozinha_interacao_done = False
+default sala3_interacao_done = False
 
 
 label splashscreen:
     play movie "initGameOK.webm"
-    $ renpy.pause(29.0, hard=True)
     window hide
     pause
     
@@ -85,8 +94,9 @@ label start:
     "Talvez, com o tempo, tudo se torne mais claro."
 
 python:
-    def sala_interacao(mensagem):
-        renpy.say(None, mensagem) 
+    def sala_interacao_safe(mensagem):
+        renpy.call_in_new_context("display_message", mensagem)
+
     
 scene sala1 with fade
 
@@ -157,13 +167,14 @@ label play_video:
     window hide
     $ renpy.pause(21.0, hard=True)  
     stop movie
+
     jump quartos_navegacao  
 
 
 
 default current_cozinha = "cozinha1"
 
-define cozinhas = ["cozinha1", "cozinha2", "cozinha3"]
+define cozinhas = ["cozinha1", "cozinha2", "cozinha3", "cozinha4"]
 
 python early:
     def mudar_cozinha(direcao):
@@ -183,4 +194,120 @@ label cozinha_navegacao:
     scene cozinha1 with fade
     while True:
         call screen navegar_cozinha
+    return
+
+label sala3_interacao:
+
+    scene sala3_interacao with fade
+
+    "Por que você sente que ainda carrega essa dor com você?"
+    menu:
+        "Porque ela é parte do amor que eu sinto.":
+            pass
+        "Porque ainda estou aprendendo a lidar com isso.":
+            pass
+
+    "Você acha que é possível encontrar paz sem esquecer dela?"
+    menu:
+        "Sim, porque as memórias são parte de mim.":
+            pass
+        "Acho que sim, estou tentando entender como.":
+            pass
+
+    "Essas lembranças, o que elas significam para você agora?"
+    menu:
+        "São um conforto nos momentos difíceis.":
+            pass
+        "São minha forma de mantê-la presente.":
+            pass
+
+    "Se ela pudesse te ver agora, o que você acha que ela diria?"
+    menu:
+        "Que eu devo viver, mesmo sentindo saudade.":
+            pass
+        "Que eu encontre felicidade novamente.":
+            pass
+
+    "Você sente que está começando a transformar essa dor em algo maior?"
+    menu:
+        "Sim, acho que estou aprendendo a seguir em frente.":
+            pass
+        "Estou tentando, um passo de cada vez.":
+            pass
+
+    "O que te faz continuar caminhando apesar da saudade?"
+    menu:
+        "Saber que ela queria que eu fosse feliz.":
+            pass
+        "As memórias que me dão força para continuar.":
+            pass
+
+    "A aceitação não significa esquecer, mas sim encontrar um novo jeito de amar."
+
+    $ renpy.pause(0.5)
+    jump ending_scene
+
+    return
+
+
+
+label sala2_interacao:
+ 
+    scene sala2_interacao with fade
+
+    "Por que você guarda essas memórias tão perto do coração?"
+    menu:
+        "Elas são tudo o que me resta agora.":
+            pass
+        "Porque não quero esquecer. Nunca.":
+            pass
+
+    "Será que a saudade sempre vai te fazer chorar?"
+    menu:
+        "Acho que sim, por enquanto.":
+            pass
+        "Talvez, também mostra o quanto eu amava.":
+            pass
+
+    "Essas lembranças te confortam ou te machucam mais?"
+    menu:
+        "As duas coisas... depende do momento.":
+            pass
+        "Elas machucam, mas fazem sentir próximo.":
+            pass
+
+    "Você acha que conseguiria viver sem essas lembranças?"
+    menu:
+        "Não, elas fazem parte de quem eu sou agora.":
+            pass
+        "Eu não sei... isso me assusta.":
+            pass
+
+    "Você sente que está pronto para transformar a dor em algo positivo?"
+    menu:
+        "Ainda não, preciso de mais tempo.":
+            pass
+        "Talvez... mas não sei por onde começar.":
+            pass
+    
+    scene ainda with fade
+    "parece que ainda está aqui comigo"
+
+    $ renpy.pause(0.2)
+    jump sala2
+    return
+
+label sala2:
+    scene sala2 with fade
+    call screen navegar_salas
+    return
+
+
+label ending_scene:
+    # Mostra um fundo preto
+    scene black with fade
+
+    show screen ending_screen
+
+    $ renpy.pause(10)
     return

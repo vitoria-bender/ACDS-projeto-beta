@@ -287,10 +287,10 @@ style quick_button_text:
 
 screen navigation():
 
-    hbox:
+    vbox:
         style_prefix "navigation"
 
-        xalign 0.5
+        xalign 0.1
         yalign 1.0
         yoffset -100
 
@@ -427,7 +427,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
     frame:
         style "game_menu_outer_frame"
 
-        hbox:
+        vbox:
 
             ## Reserve espaço para a seção de navegação.
             frame:

@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label sala3 is defined twice, at File "game/script.rpy", line 121:
-label sala3:
-and File "game/script.rpy", line 154:
-label sala3: 
-
+File "game/screens.rpy", line 294: the yalign keyword argument was not given a value.
+    yalign
+          ^
 
 Ren'Py Version: Ren'Py 8.3.2.24090902
-Mon Nov 18 10:33:28 2024
+Thu Nov 21 02:58:56 2024

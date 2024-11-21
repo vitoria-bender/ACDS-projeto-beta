@@ -1,28 +1,42 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 119, in script
-    call screen corredor
-ScriptError: could not find label 'sala3'.
+  File "renpy/common/00start.rpy", line 216, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 548, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 548, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 559, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+AttributeError: Can't get attribute 'mudar_sala' on <renpy.python.StoreModule object at 0x0000000003e16fd0>
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\bootstrap.py", line 359, in bootstrap
-    renpy.main.main()
-  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\main.py", line 652, in main
-    run(restart)
-  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\main.py", line 148, in run
-    renpy.execution.run_context(True)
-  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\execution.py", line 958, in run_context
-    context.run()
-  File "game/script.rpy", line 119, in script
-    call screen corredor
-  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\script.py", line 1103, in lookup
-    raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'sala3'.
+  File "renpy/common/00start.rpy", line 216, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 548, in script
+    python hide:
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\ast.py", line 821, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\python.py", line 1178, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "renpy/common/00keymap.rpy", line 548, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 559, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\loadsave.py", line 825, in load
+    roots, log = loads(log_data)
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\compat\pickle.py", line 104, in loads
+    return load(io.BytesIO(s))
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\compat\pickle.py", line 101, in load
+    return up.load()
+  File "C:\Users\vitor\Downloads\renpy-8.3.2-sdk\renpy-8.3.2-sdk\renpy\compat\pickle.py", line 97, in find_class
+    return super().find_class(module, name)
+AttributeError: Can't get attribute 'mudar_sala' on <renpy.python.StoreModule object at 0x0000000003e16fd0>
 
 Windows-10-10.0.22621 AMD64
 Ren'Py 8.3.2.24090902
 As cores da Saudade 1.0
-Mon Nov 18 10:27:00 2024
+Thu Nov 21 03:25:35 2024

@@ -17,9 +17,18 @@ screen navegar_salas():
         idle "botaoDireita.png"
         hover "botaoDireita.png"
         action Function(mudar_sala, "direita")
-        xpos 1620
+        xpos 1620 
         ypos 530
     
+
+    if current_room == "sala2":
+        imagebutton:
+            idle "transparente.png"   
+            action Jump("sala2_interacao")
+            xpos 450  
+            ypos 520  
+            ysize 150  
+
     if current_room == "sala3":
         imagebutton:
             idle "BotaoPorta.png"
@@ -28,8 +37,29 @@ screen navegar_salas():
             xpos 450
             ypos 300
 
+        imagebutton: 
+            idle "transparente.png"
+            hover"transparente.png"
+            action Jump("sala3_interacao")
+            xpos 1000
+            ypos 250   
+
+    if current_room == "sala4":
+        imagebutton:
+            idle "transparente.png"   
+            action Jump("cozinha_navegacao")
+            xpos 450  
+            ypos 520  
+            xsize 900
+            ysize 1000  
     
-    
+screen sala2_interacao:
+    add "sala2_interacao"
+
+screen sala3_interacao:
+    add "sala3_interacao"
+
+
 screen corredor():
     # Mostra a imagem do corredor
     add "corredor"
@@ -44,12 +74,12 @@ screen corredor():
 
     
     imagebutton:
-        idle "BotaoPorta.png"  # Imagem normal do botão
-        hover "BotaoPorta.png"  # Imagem ao passar o mouse
-        action Jump("quartos_navegacao")  # Vai para a cena da esquerda
+        idle "BotaoPorta.png"  
+        hover "BotaoPorta.png" 
+        action Jump("quartos_navegacao") 
         xpos 700
         ypos 400
-        focus_mask True  # Define toda a imagem como clicável
+        focus_mask True
 
  
 screen navegar_quartos():
@@ -74,24 +104,26 @@ screen navegar_quartos():
 
     if current_quarto == "quarto1":
         imagebutton:
-            idle "BotaoPorta.png"
-            hover "BotaoPorta.png"
+            idle "transparente.png"
+            hover "transparente.png"
             action Jump("play_video")
             xpos 720
             ypos 190
+            xsize 500
+            ysize 300
 
     if current_quarto == "quarto3":
         imagebutton:
-            idle "BotaoPorta.png"
-            hover "BotaoPorta.png"
+            idle "transparente.png"
             action Jump("corredor")
             xpos 450
             ypos 300
+            xsize 400
+            ysize 700
 
 
 # Tela para navegar entre as salas da cozinha
 screen navegar_cozinha():
-    # Mostra a imagem da sala atual
     add current_cozinha
 
 
@@ -110,3 +142,59 @@ screen navegar_cozinha():
         action Function(mudar_cozinha, "direita")
         xpos 1600
         ypos 500
+
+    if current_cozinha == "cozinha1":
+        imagebutton:
+            idle "transparente.png" 
+            action Function(sala_interacao_safe, "guardei aquele último bilhete que foi deixado")
+            xpos 300  
+            ypos 400
+            xsize 200  
+            ysize 400 
+
+
+
+    if current_cozinha == "cozinha4":
+        imagebutton:
+            idle "transparente.png"   
+            action Jump("sala2")
+            xpos 450  
+            ypos 520  
+            xsize 900
+            ysize 1000  
+
+
+
+screen ending_screen:
+
+    vbox:
+        xalign 0.5  # Centraliza horizontalmente
+        yalign 0.5  # Centraliza verticalmente
+        spacing 20  # Espaçamento entre as linhas de texto
+
+        # Agradecimento ao jogador
+        text "Obrigado por jogar 'As Cores da Saudade'.":
+            size 40
+            color "#FFFFFF"
+            bold True
+
+        # Espaçamento extra entre as seções
+        null height 30
+
+        # Créditos de produção
+        text "Produção: Vitória Daris Bender":
+            size 30
+            color "#CCCCCC"
+
+        # Créditos de trilha sonora
+        text "Trilha Sonora: Guilherme Reinehr":
+            size 30
+            color "#CCCCCC"
+
+        # Encerramento
+        null height 30
+        text "Nos vemos na próxima jornada.":
+            size 25
+            color "#AAAAAA"
+
+    
